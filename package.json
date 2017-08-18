@@ -1,0 +1,8 @@
+{
+  "name": "Simple-Chat",
+  "version": "0.0.1",
+  "Descripton": "It's Peanuts",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
