@@ -17,6 +17,7 @@ io.on('connection', function (socket) {
     console.log(current_users)
     var user = randomNames.generateUsernam(current_users);
     console.log(user + ' Just connected');
+    current_users[user] = true;
     io.emit('new user', user)
     socket.on('chat message', function (msg) {
        io.emit('chat message', msg, user);
