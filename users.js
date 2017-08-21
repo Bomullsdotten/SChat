@@ -73,34 +73,47 @@ var name_list = [
     'Calamity Jane',
     'Jesse James',
     'Buffalo Bill',
-    'Ma Dalton',
+    'Ma Dalton'
 ]
 
 
 module.exports = {
     generateUsernam: function (users) {
         // We wat to make fewer guesses if on unique usernames if the userbase is large
-        var guess_counter = name_list.length - Object.keys(users).length;
-        var name = name_list[Math.floor(Math.random() * name_list.length)];
-        while (guess_counter > 0){
-            if (uniqueName(name, users)){
-                return name;
-            }
-            else {
-                name = name_list[Math.floor(Math.random() * name_list.length)];
-            }
-            guess_counter --;
+        var new_username = find_carton_name(users);
+        if (uniqueName(new_username, users)){
+            return new_username;
         }
-        while (true){
-            name += Math.floor(Math.random()*9);
-            if (uniqueName(name, users)){
-                return name;
-            }
-        }
+        return uniquely_modified_name(new_username, users)
     }
 
 
 };
+
+function uniquely_modified_name(username, existing_users) {
+    var name = username;
+    while (true){
+        name += Math.floor(Math.random()*9);
+        if (uniqueName(name, existing_users)){
+            return name;
+        }
+    }
+}
+
+function find_carton_name(users) {
+    var guess_counter = name_list.length - Object.keys(users).length;
+    var name = name_list[Math.floor(Math.random() * name_list.length)];
+    while (guess_counter > 0){
+        if (uniqueName(name, users)){
+            return name;
+        }
+        else {
+            name = name_list[Math.floor(Math.random() * name_list.length)];
+        }
+        guess_counter --;
+    }
+    return false
+}
 
 function uniqueName(name, list_of_names){
     // if undefined
