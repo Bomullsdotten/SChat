@@ -14,11 +14,10 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function (socket) {
-    console.log(current_users)
     var user = randomNames.generateUsernam(current_users);
     console.log(user + ' Just connected');
     current_users[user] = true;
-    io.emit('new user', user)
+    io.emit('new user', user, current_users)
     socket.on('chat message', function (msg) {
        io.emit('chat message', msg, user);
    });
@@ -26,7 +25,8 @@ io.on('connection', function (socket) {
    socket.on('disconnect', function () {
        delete current_users[user];
        console.log(user + ' disconected')
-   })
+       io.emit('remove user', user);
+   });
 });
 
 http.listen(3000, function () {

@@ -5,8 +5,15 @@
     <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
 </head>
 <body>
-<ul id="messages"></ul>
-<ul id="userbase"></ul>
+<div id="main">
+<ul id="messages" class="padding"></ul>
+</div>
+
+<div id="right-panel" class="padding">
+<ul id="userbase">
+    <li>Current users in chat:</li>
+</ul>
+</div>
 <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
 </form>
@@ -20,13 +27,21 @@
             $('#m').val('');
             return false;
         });
+
         socket.on('chat message', function(msg, user){
             var ms = user+": "+msg;
             $('#messages').append($('<li>').text(ms));
         });
-        socket.on('new user', function (username) {
+
+        socket.on('new user', function (username, users) {
             var msg = '*'+username+ ' just connected';
             $('#messages').append($('<li class="connection">').text(msg));
+
+            document.getElementById("userbase").innerHTML = "";
+            $('#userbase').append($('<li>').text("Curently connected users"));
+            for (key in users){
+                $('#userbase').append($('<li>').text(key));
+            }
         });
     });
 </script>
