@@ -116,7 +116,7 @@ function find_carton_name(users) {
 }
 
 function uniqueName(name, list_of_names){
-    // if undefined
+    // if index undefined
     if (list_of_names[name] == null){
         return true;
     }

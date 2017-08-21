@@ -16,10 +16,10 @@ app.get('/', function(req, res){
 io.on('connection', function (socket) {
     console.log(current_users)
     var user = randomNames.generateUsernam(current_users);
-    current_users[user] = true;
     console.log(user + ' Just connected');
+    io.emit('new user', user)
     socket.on('chat message', function (msg) {
-       io.emit('chat message', msg);
+       io.emit('chat message', msg, user);
    });
 
    socket.on('disconnect', function () {

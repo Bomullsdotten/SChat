@@ -43,3 +43,11 @@ form input {
 #messages li:nth-child(odd) {
     background: #eee;
 }
+
+#messages li.connection:nth-child(odd) {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+#messages li.connection{
+    background: rgba(250, 0, 0, 0.45);
+}

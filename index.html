@@ -6,6 +6,7 @@
 </head>
 <body>
 <ul id="messages"></ul>
+<ul id="userbase"></ul>
 <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
 </form>
@@ -19,9 +20,14 @@
             $('#m').val('');
             return false;
         });
-        socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
+        socket.on('chat message', function(msg, user){
+            var ms = user+": "+msg;
+            $('#messages').append($('<li>').text(ms));
         });
+        socket.on('new user', function (username) {
+            var msg = '*'+username+ ' just connected';
+            $('#messages').append($('<li class="connection">').text(msg));
+        })
     });
 </script>
 </body>
