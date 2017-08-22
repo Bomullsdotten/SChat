@@ -29,7 +29,7 @@ io.on('connection', function (socket) {
     socket.on('message', function (message) {
         var text = username + ': '+ message;
         socket.broadcast.emit('message', text);
-    })
+    });
 
     socket.on('disconnect', function () {
         delete currentUsers[username];

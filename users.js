@@ -79,7 +79,6 @@ var name_list = [
 
 module.exports = {
     generateUsername: function (users) {
-        // We wat to make fewer guesses if on unique usernames if the userbase is large
         var new_username = find_carton_name(users);
         if (uniqueName(new_username, users)){
             return new_username;
@@ -101,8 +100,12 @@ function uniquely_modified_name(username, existing_users) {
 }
 
 function find_carton_name(users) {
+    // If the userbase is large compared to our list of premade usernames we want to shorten our time trying to find
+    // a unique name, and just generate on instead.
+
     var guess_counter = name_list.length - Object.keys(users).length;
     var name = name_list[Math.floor(Math.random() * name_list.length)];
+
     while (guess_counter > 0){
         if (uniqueName(name, users)){
             return name;

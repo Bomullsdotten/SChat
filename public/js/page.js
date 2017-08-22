@@ -4,10 +4,13 @@
 $(function () {
     var socket = io();
     $('form').submit(function () {
+        // push to others:
         var $m = $('#m');
         socket.emit('message', $m.val());
+        // push to self:
         var text = $('#username').html() + ': '+ $m.val();
         $('#messages').append($('<li class="user">').text(text));
+
         $m.val(''); // Reset input field.
         return false;
     });
@@ -26,8 +29,10 @@ $(function () {
 
     socket.on('update userbase', function (a_list) {
         var  $userbase = $('#userbase');
+
         $userbase.empty();
         $userbase.append($('<li>').text('Current users in chat:'));
+
         for (var i = 0; i < a_list.length; i++){
             $userbase.append($('<li>').text(a_list[i]));
         }
