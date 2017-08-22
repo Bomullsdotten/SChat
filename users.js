@@ -4,7 +4,7 @@
 var name_list = [
     'Charlie Brown',
     'Patty',
-    'Snoopy']/*,
+    'Snoopy',
     'Violet Gray',
     'Schroeder',
     'Lucy van Pelt',
@@ -74,14 +74,14 @@ var name_list = [
     'Jesse James',
     'Buffalo Bill',
     'Ma Dalton'
-]*/
+]
 
 
 module.exports = {
     generateUsername: function (users) {
         // We wat to make fewer guesses if on unique usernames if the userbase is large
         var new_username = find_carton_name(users);
-        if (uniqueName(new_username, users) && new_username){
+        if (uniqueName(new_username, users)){
             return new_username;
         }
         return uniquely_modified_name(new_username, users)
@@ -112,7 +112,7 @@ function find_carton_name(users) {
         }
         guess_counter --;
     }
-    return false
+    return name;
 }
 
 function uniqueName(name, list_of_names){
