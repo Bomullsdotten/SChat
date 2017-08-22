@@ -1,4 +1,7 @@
 /**
+ * Created by Snicx on 21/08/2017.
+ */
+/**
  * Created by Snicx on 19/08/2017.
  */
 var name_list = [
@@ -77,18 +80,16 @@ var name_list = [
 ]
 
 
-module.exports = {
-    generateUsername: function (users) {
+function generateUsername(users) {
         // We wat to make fewer guesses if on unique usernames if the userbase is large
         var new_username = find_carton_name(users);
         if (uniqueName(new_username, users)){
             return new_username;
         }
         return uniquely_modified_name(new_username, users)
-    }
+}
 
 
-};
 
 function uniquely_modified_name(username, existing_users) {
     var name = username;

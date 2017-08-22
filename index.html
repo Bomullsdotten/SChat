@@ -15,7 +15,11 @@
 </ul>
 </div>
 <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
+    <label id="username">Somme text</label>
+    <div>
+    <button>Send</button>
+    <input id="m" autocomplete="off" />
+    </div>
 </form>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -23,26 +27,32 @@
     $(function () {
         var socket = io();
         $('form').submit(function () {
-            socket.emit('chat message', $('#m').val());
+            socket.emit('message', $('#m').val());
+            var text = $('#username').html() + ': '+ $('#m').val();
+            $('#messages').append($('<li id="user">').text(text));
             $('#m').val('');
             return false;
         });
 
-        socket.on('chat message', function(msg, user){
-            var ms = user+": "+msg;
-            $('#messages').append($('<li>').text(ms));
+        socket.on('message', function(message){
+            $('#messages').append($('<li>').text(message));
         });
 
-        socket.on('new user', function (username, users) {
-            var msg = '*'+username+ ' just connected';
-            $('#messages').append($('<li class="connection">').text(msg));
+        socket.on('user update', function (message) {
+            $('#messages').append($('<li class="connection">').text(message));
+        });
 
-            document.getElementById("userbase").innerHTML = "";
-            $('#userbase').append($('<li>').text("Curently connected users"));
-            for (key in users){
-                $('#userbase').append($('<li>').text(key));
+        socket.on('username', function (username) {
+            $('#username').text(username);
+        });
+
+        socket.on('update userbase', function (a_list) {
+            $('#userbase').empty();
+            $('#userbase').append($('<li>').text('Current users in chat:'));
+            for (var i = 0; i < a_list.length; i++){
+                $('#userbase').append($('<li>').text(a_list[i]));
             }
-        });
+        })
     });
 </script>
 </body>

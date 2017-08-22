@@ -1,5 +1,5 @@
 var express = require('express');
-var path = require('path')
+var path = require('path');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -17,7 +17,8 @@ io.on('connection', function (socket) {
     var user = randomNames.generateUsernam(current_users);
     console.log(user + ' Just connected');
     current_users[user] = true;
-    io.emit('new user', user, current_users)
+    io.emit('new user', user, current_users);
+
     socket.on('chat message', function (msg) {
        io.emit('chat message', msg, user);
    });

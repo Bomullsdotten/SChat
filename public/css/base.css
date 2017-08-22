@@ -8,6 +8,8 @@ form button {
     background: rgb(130, 224, 255);
     border: none;
     padding: 10px;
+    float: right;
+
 }
 
 body {
@@ -26,8 +28,9 @@ form {
 form input {
     border: 0;
     padding: 10px;
-    width: 90%;
     margin-right: .5%;
+    width: 90%;
+
 }
 
 #messages {
@@ -64,6 +67,19 @@ form input {
     float: right;
 }
 
+#userbase{
+    min-width: initial;
+}
+
 #userbase li:nth-child(odd){
     background-color: rgba(0, 255, 255, 0.2);
+}
+
+#user{
+    background-color: rgba(0, 255, 0, 0.21);
+}
+
+#username{
+    width: 10%;
+    color: yellow;
 }
