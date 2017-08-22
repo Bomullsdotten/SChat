@@ -29,7 +29,7 @@
         $('form').submit(function () {
             socket.emit('message', $('#m').val());
             var text = $('#username').html() + ': '+ $('#m').val();
-            $('#messages').append($('<li id="user">').text(text));
+            $('#messages').append($('<li class="user">').text(text));
             $('#m').val('');
             return false;
         });
