@@ -2,8 +2,13 @@
   "name": "Simple-Chat",
   "version": "0.0.1",
   "Descripton": "It's Peanuts",
+  "scripts": {
+    "start": "micro"
+  },
   "dependencies": {
     "express": "^4.15.2",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "micro": "latest"
   }
+
 }
