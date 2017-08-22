@@ -1,5 +1,5 @@
 /**
- * Created by Snicx on 22/08/2017.
+ * Created by Sondre Erstad on 22/08/2017.
  */
 $(function () {
     var socket = io();

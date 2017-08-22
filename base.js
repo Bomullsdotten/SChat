@@ -1,5 +1,5 @@
 /**
- * Created by Snicx on 21/08/2017.
+ * Created by Ssondre Erstad on 21/08/2017.
  */
 
 

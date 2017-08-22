@@ -1,5 +1,5 @@
 /**
- * Created by Snicx on 19/08/2017.
+ * Created by Sondre Erstad on 19/08/2017.
  */
 var name_list = [
     'Charlie Brown',
