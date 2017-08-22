@@ -74,7 +74,7 @@ var name_list = [
     'Jesse James',
     'Buffalo Bill',
     'Ma Dalton'
-]
+];
 
 
 module.exports = {
