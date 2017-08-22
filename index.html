@@ -4,23 +4,26 @@
     <title>Simple Chat</title>
     <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
 </head>
+
 <body>
 <div id="main">
-<ul id="messages" class="padding"></ul>
+    <ul id="messages" class="padding"></ul>
 </div>
 
 <div id="right-panel" class="padding">
-<ul id="userbase">
-    <li>Current users in chat:</li>
-</ul>
+    <ul id="userbase">
+        <li>Current users in chat:</li>
+    </ul>
 </div>
+
 <form action="">
-    <label id="username">Somme text</label>
+    <label for="m" id="username" >Somme text</label>
     <div>
     <button>Send</button>
     <input id="m" autocomplete="off" />
     </div>
 </form>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script src="static/js/page.js"></script>
